@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 import traverse from "@babel/traverse";
 import * as babylon from "@babel/parser";
-import * as t from "@babel/types";
 import * as fs from "fs";
 import * as u from "./utils";
 import * as c from "./common";
@@ -101,7 +100,8 @@ function parseAndExtract(config) {
   return function([ fileName, source ]) {
     const ast = babylon.parse(source, {
       sourceType: "module",
-      plugins: [ "jsx" ]
+      sourceFilename: fileName,
+      plugins: [ "jsx", "typescript" ]
     });
     let catalog = {}
     traverse(ast, visitor(fileName, catalog, config));
