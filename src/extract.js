@@ -113,7 +113,8 @@ function makeTranslationObject(catalog) {
   return {
     charset: "utf-8",
     headers: {
-      "POT-Creation-Date": (new Date()).toISOString()
+      "POT-Creation-Date": (new Date()).toISOString(),
+      "content-type": "text/plain; charset=utf-8",
     },
     translations: {
       "": catalog
